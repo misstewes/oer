@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Belize OER</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-gray-100 text-gray-900">
+    <header class="sticky top-0 z-10 bg-purple-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 md:py-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold">University of Belize OER</h1>
+                <button id="menuToggle" class="md:hidden" aria-label="Toggle menu">
+                    <i data-lucide="menu"></i>
+                </button>
+                <nav id="mainNav" class="hidden md:block">
+                    <ul class="flex flex-col md:flex-row md:space-x-6">
+                        <li><a href="#about-oer" class="block py-2 hover:text-yellow-400 md:inline-block">About OER</a></li>
+                        <li><a href="#faculty-guide" class="block py-2 hover:text-yellow-400 md:inline-block">Faculty Guide</a></li>
+                        <li><a href="#oer-info" class="block py-2 hover:text-yellow-400 md:inline-block">OER Info</a></li>
+                        <li><a href="#videos" class="block py-2 hover:text-yellow-400 md:inline-block">Videos</a></li>
+                        <li><a href="#repository" class="block py-2 hover:text-yellow-400 md:inline-block">Repository</a></li>
+                        <li><a href="#creation-tools" class="block py-2 hover:text-yellow-400 md:inline-block">Creation Tools</a></li>
+                        <li><a href="#contact" class="block py-2 hover:text-yellow-400 md:inline-block">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="bg-gradient-to-br from-purple-800 to-yellow-500 py-20 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="mb-4 text-4xl font-bold">University of Belize Open Educational Resources</h2>
+                <p class="mb-8 text-xl">Empowering education through cost-effective and ethical use of open resources</p>
+                <div class="space-x-4">
+                    <a href="#repository" class="btn btn-default">Explore OER Resources</a>
+                    <a href="#about-oer" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-oer" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">About Open Educational Resources (OER)</h2>
+                <div class="card">
+                    <div class="p-6">
+                        <p class="mb-4">Open Educational Resources (OER) are free, openly licensed educational materials that can be used for teaching, learning, research, and other purposes. They come in many formats, such as textbooks, full courses, videos, tests, and software.</p>
+                        <h3 class="mb-4 text-2xl font-semibold">Benefits of OER</h3>
+                        <ul class="list-inside list-disc space-y-2">
+                            <li><strong>Cost Savings:</strong> OER materials are free, which can significantly reduce the cost burden on students.</li>
+                            <li><strong>Flexibility:</strong> OER can be customized to fit the specific needs of your course, allowing you to adapt materials to suit your teaching style and your students' learning preferences.</li>
+                            <li><strong>Up-to-Date Content:</strong> Unlike traditional textbooks, OER can be continuously updated to include the most recent information, ensuring your course materials stay current.</li>
+                            <li><strong>Accessibility:</strong> OER can be easily accessed by students, regardless of their location or financial situation.</li>
+                            <li><strong>Collaboration:</strong> OER promotes collaboration among educators, allowing them to share and improve resources collectively.</li>
+                            <li><strong>Innovation:</strong> The open nature of OER encourages innovative teaching methods and content creation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faculty-guide" class="bg-white py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">Faculty Guide to Using OER</h2>
+                <div class="card">
+                    <div class="p-6">
+                        <p class="mb-4">As an educator, adopting open educational resources can enhance your teaching and benefit your students. Here's a guide to help you get started:</p>
+                        <ol class="list-inside list-decimal space-y-2">
+                            <li><strong>Explore OER Repositories:</strong> Familiarize yourself with OER repositories like OER Commons, MERLOT, and OpenStax.</li>
+                            <li><strong>Evaluate Quality:</strong> Assess the quality and relevance of OER materials for your course objectives.</li>
+                            <li><strong>Adapt and Customize:</strong> Modify OER to fit your specific course needs and teaching style.</li>
+                            <li><strong>Integrate with Existing Materials:</strong> Combine OER with your existing course materials for a comprehensive curriculum.</li>
+                            <li><strong>Provide Clear Attribution:</strong> Ensure proper attribution for all OER materials used in your course.</li>
+                            <li><strong>Gather Student Feedback:</strong> Collect feedback from students on the effectiveness of OER materials.</li>
+                            <li><strong>Contribute Back:</strong> Consider creating and sharing your own OER to contribute to the community.</li>
+                            <li><strong>Stay Informed:</strong> Keep up with OER trends and best practices through workshops and professional development opportunities.</li>
+                            <li><strong>Explore Creation Tools:</strong> Familiarize yourself with OER creation tools like Pressbooks to develop your own resources.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="oer-info" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="tabs">
+                    <div class="tab-list mb-8 justify-center">
+                        <button class="tab-trigger" data-tab="five-rs">The 5Rs of OER</button>
+                        <button class="tab-trigger" data-tab="cc-licenses">Creative Commons Licenses</button>
+                    </div>
+                    <div class="tab-content" id="five-rs">
+                        <div class="card">
+                            <div class="p-6">
+                                <h2 class="mb-4 text-3xl font-bold">The 5Rs of Open Educational Resources</h2>
+                                <p class="mb-4">The 5Rs describe the permissions that are inherent in OER:</p>
+                                <ul class="list-inside list-disc space-y-2">
+                                    <li><strong>Retain:</strong> The right to make, own, and control copies of the content.</li>
+                                    <li><strong>Reuse:</strong> The right to use the content in a wide range of ways (e.g., in a class, in a study group, on a website).</li>
+                                    <li><strong>Revise:</strong> The right to adapt, adjust, modify, or alter the content itself (e.g., translate the content into another language).</li>
+                                    <li><strong>Remix:</strong> The right to combine the original or revised content with other material to create something new (e.g., incorporate the content into a mashup).</li>
+                                    <li><strong>Redistribute:</strong> The right to share copies of the original content, your revisions, or your remixes with others (e.g., give a copy of the content to a friend).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content hidden" id="cc-licenses">
+                        <div class="card">
+                            <div class="p-6">
+                                <h2 class="mb-4 text-3xl font-bold">Creative Commons Licenses</h2>
+                                <p class="mb-4">Creative Commons licenses allow content creators to communicate which rights they reserve and which rights they waive for the benefit of recipients or other creators. Here are the main types of Creative Commons licenses:</p>
+                                <ul class="list-inside list-disc space-y-2">
+                                    <li><strong>CC BY:</strong> This license allows others to distribute, remix, adapt, and build upon the work, even commercially, as long as they credit the original creation.</li>
+                                    <li><strong>CC BY-SA:</strong> This license lets others remix, tweak, and build upon the work even for commercial purposes, as long as they credit the original creator and license their new creations under identical terms.</li>
+                                    <li><strong>CC BY-NC:</strong> This license lets others remix, tweak, and build upon the work non-commercially, and although their new works must also acknowledge the author, they don't have to license their derivative works on the same terms.</li>
+                                    <li><strong>CC BY-ND:</strong> This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to the author.</li>
+                                    <li><strong>CC BY-NC-SA:</strong> This license lets others remix, tweak, and build upon the work non-commercially, as long as they credit the author and license their new creations under identical terms.</li>
+                                    <li><strong>CC BY-NC-ND:</strong> This license is the most restrictive, allowing others to download the works and share them with others as long as they credit the author, but they can't change them in any way or use them commercially.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" class="bg-white py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">OER Video Resources</h2>
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="mb-4 text-xl font-semibold">What is OER?</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/CnFCtP1pPrM" title="What is OER?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="h-full w-full"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="mb-4 text-xl font-semibold">OER: A Practical Guide</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/UBFOQEmR1n4" title="OER: A Practical Guide" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="h-full w-full"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="mb-4 text-xl font-semibold">OER and Creative Commons</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/gLWTbIt8l3U" title="OER and Creative Commons" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="h-full w-full"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="repository" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">OER Repository</h2>
+                <div class="mb-6 flex flex-col gap-4 sm:flex-row">
+                    <input type="text" id="searchInput" placeholder="Search OER resources..." class="input max-w-md">
+                    <select id="categorySelect" class="select w-[180px]">
+                        <option value="All">All Categories</option>
+                    </select>
+                </div>
+                <div id="resourcesContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Resources will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="creation-tools" class="bg-white py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">OER Creation Tools</h2>
+                <p class="mb-6">Explore these powerful tools for creating and publishing your own Open Educational Resources:</p>
+                <div id="creationToolsContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Creation tools will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">Contact Us</h2>
+                <div class="card">
+                    <div class="p-6">
+                        <p class="mb-4">If you have any questions or need assistance with OER, please don't hesitate to contact us:</p>
+                        <ul class="list-inside list-disc space-y-2">
+                            <li><strong>Email:</strong> oer@ub.edu.bz</li>
+                            <li><strong>Phone:</strong> +501 822-1000</li>
+                            <li><strong>Address:</strong> University of Belize, Hummingbird Avenue, Belmopan,   Belize</li>
+                        </ul>
+                        <p class="mt-4">We're here to support your OER journey and answer any questions you may have about implementing OER in your courses.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-800 py-8 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 University of Belize OER Repository. All rights reserved.</p>
+            <nav class="mt-4">
+                <ul class="flex flex-wrap justify-center gap-4">
+                    <li><a href="#about-oer" class="hover:text-yellow-400">About OER</a></li>
+                    <li><a href="#faculty-guide" class="hover:text-yellow-400">Faculty Guide</a></li>
+                    <li><a href="#oer-info" class="hover:text-yellow-400">OER Info</a></li>
+                    <li><a href="#videos" class="hover:text-yellow-400">Videos</a></li>
+                    <li><a href="#repository" class="hover:text-yellow-400">Repository</a></li>
+                    <li><a href="#creation-tools" class="hover:text-yellow-400">Creation Tools</a></li>
+                    <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" class="fixed bottom-4 right-4 rounded-full shadow-lg btn btn-secondary hidden" aria-label="Scroll to top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
