@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Belize OER</title>
+    <meta name="description" content="Explore Open Educational Resources at the University of Belize. Find free textbooks, courses, and tools for educators and students.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <style>
+        /* Base styles */
+        :root {
+            --primary: #6b21a8;
+            --primary-dark: #4c1d95;
+            --secondary: #fbbf24;
+            --text: #1f2937;
+            --background: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.5;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        h6 { font-size: 1rem; }
+
+        /* Header styles */
+        header {
+            background-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(107, 33, 168, 0.95);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        /* Navigation styles */
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-default {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-default:hover {
+            background-color: var(--secondary);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+        }
+
+        /* Card styles */
+        .card {
+            background-color: var(--white);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form styles */
+        .input, .select {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input:focus, .select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(107, 33, 168, 0.1);
+        }
+
+        /* Tab styles */
+        .tabs {
+            width: 100%;
+        }
+
+        .tab-list {
+            display: flex;
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+        }
+
+        .tab-trigger {
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-trigger[data-state="active"] {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+            margin-top: 1rem;
+        }
+
+        /* Video container styles */
+        .aspect-w-16 {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .aspect-h-9 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--secondary);
+        }
+
+        /* Scroll to top button */
+        #scrollTopBtn {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #scrollTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Focus visible styles for better keyboard navigation */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.5rem; }
+            h4 { font-size: 1.25rem; }
+            h5 { font-size: 1.1rem; }
+            h6 { font-size: 1rem; }
+        }
+
+        /* Print styles */
+        @media print {
+            header, footer, #scrollTopBtn {
+                display: none;
+            }
+
+            body {
+                font-size: 12pt;
+            }
+
+            a[href]:after {
+                content: " (" attr(href) ")";
+            }
+        }
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Additional utility classes */
+        .text-primary { color: var(--primary); }
+        .bg-primary { background-color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .bg-secondary { background-color: var(--secondary); }
+
+        .shadow-md { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .shadow-lg { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+
+        .transition-all { transition: all 0.3s ease; }
+
+        .hover\:shadow-lg:hover { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+
+        /* Add smooth scrolling for the entire page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Add a CSS-only dark mode toggle */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a202c;
+                color: #e2e8f0;
+            }
+
+            .card {
+                background-color: #2d3748;
+            }
+
+            .bg-white {
+                background-color: #2d3748;
+            }
+
+            .text-gray-600 {
+                color: #cbd5e0;
+            }
+
+            .text-gray-500 {
+                color: #a0aec0;
+            }
+        }
+
+        /* Sticky category navigation */
+        .sticky-category-nav {
+            position: sticky;
+            top: 80px; /* Adjust based on your header height */
+            z-index: 10;
+            background-color: var(--background);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 text-gray-900">
+    <header class="sticky top-0 z-10 bg-purple-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 md:py-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold">University of Belize OER</h1>
+                <button id="menuToggle" class="md:hidden" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <nav id="mainNav" class="hidden md:block">
+                    <ul class="flex flex-col md:flex-row md:space-x-6">
+                        <li><a href="#about-oer" class="block py-2 hover:text-yellow-400 md:inline-block">About OER</a></li>
+                        <li><a href="#faculty-guide" class="block py-2 hover:text-yellow-400 md:inline-block">Faculty Guide</a></li>
+                        <li><a href="#oer-info" class="block py-2 hover:text-yellow-400 md:inline-block">OER Info</a></li>
+                        <li><a href="#videos" class="block py-2 hover:text-yellow-400 md:inline-block">Videos</a></li>
+                        <li><a href="#repository" class="block py-2 hover:text-yellow-400 md:inline-block">Repository</a></li>
+                        <li><a href="#creation-tools" class="block py-2 hover:text-yellow-400 md:inline-block">Creation Tools</a></li>
+                        <li><a href="#contact" class="block py-2 hover:text-yellow-400 md:inline-block">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="bg-gradient-to-br from-purple-800 to-yellow-500 py-20 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="mb-4 text-4xl font-bold">University of Belize Open Educational Resources</h2>
+                <p class="mb-8 text-xl">Empowering education through cost-effective and ethical use of open resources</p>
+                <div class="space-x-4">
+                    <a href="#repository" class="btn btn-default">Explore OER Resources</a>
+                    <a href="#about-oer" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-oer" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">About Open Educational Resources (OER)</h2>
+                <div class="card">
+                    <div class="p-6">
+                        <p class="mb-4">Open Educational Resources (OER) are free, openly licensed educational materials that can be used for teaching, learning, research, and other purposes. They come in many formats, such as textbooks, full courses, videos, tests, and software.</p>
+                        <h3 class="mb-4 text-2xl font-semibold">Benefits of OER</h3>
+                        <ul class="list-inside list-disc space-y-2">
+                            <li><strong>Cost Savings:</strong> OER materials are free, which can significantly reduce the cost burden on students.</li>
+                            <li><strong>Flexibility:</strong> OER can be customized to fit the specific needs of your course, allowing you to adapt materials to suit your teaching style and your students' learning preferences.</li>
+                            <li><strong>Up-to-Date Content:</strong> Unlike traditional textbooks, OER can be continuously updated to include the most recent information, ensuring your course materials stay current.</li>
+                            <li><strong>Accessibility:</strong> OER can be easily accessed by students, regardless of their location or financial situation.</li>
+                            <li><strong>Collaboration:</strong> OER promotes collaboration among educators, allowing them to share and improve resources collectively.</li>
+                            <li><strong>Innovation:</strong> The open nature of OER encourages innovative teaching methods and content creation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faculty-guide" class="bg-white py-16">
+            
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">Faculty Guide to Using OER</h2>
+                <div class="card">
+                    <div class="p-6">
+                        <p class="mb-4">As an educator, adopting open educational resources can enhance your teaching and benefit your students. Here's a guide  to help you get started:</p>
+                        <ol class="list-inside list-decimal space-y-2">
+                            <li><strong>Explore OER Repositories:</strong> Familiarize yourself with OER repositories like OER Commons, MERLOT, and OpenStax.</li>
+                            <li><strong>Evaluate Quality:</strong> Assess the quality and relevance of OER materials for your course objectives.</li>
+                            <li><strong>Adapt and Customize:</strong> Modify OER to fit your specific course needs and teaching style.</li>
+                            <li><strong>Integrate with Existing Materials:</strong> Combine OER with your existing course materials for a comprehensive curriculum.</li>
+                            <li><strong>Provide Clear Attribution:</strong> Ensure proper attribution for all OER materials used in your course.</li>
+                            <li><strong>Gather Student Feedback:</strong> Collect feedback from students on the effectiveness of OER materials.</li>
+                            <li><strong>Contribute Back:</strong> Consider creating and sharing your own OER to contribute to the community.</li>
+                            <li><strong>Stay Informed:</strong> Keep up with OER trends and best practices through workshops and professional development opportunities.</li>
+                            <li><strong>Explore Creation Tools:</strong> Familiarize yourself with OER creation tools like Pressbooks to develop your own resources.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="oer-info" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="tabs">
+                    <div class="tab-list mb-8 justify-center">
+                        <button class="tab-trigger" data-tab="five-rs">The 5Rs of OER</button>
+                        <button class="tab-trigger" data-tab="cc-licenses">Creative Commons Licenses</button>
+                    </div>
+                    <div class="tab-content" id="five-rs">
+                        <div class="card">
+                            <div class="p-6">
+                                <h2 class="mb-4 text-3xl font-bold">The 5Rs of Open Educational Resources</h2>
+                                <p class="mb-4">The 5Rs describe the permissions that are inherent in OER:</p>
+                                <ul class="list-inside list-disc space-y-2">
+                                    <li><strong>Retain:</strong> The right to make, own, and control copies of the content.</li>
+                                    <li><strong>Reuse:</strong> The right to use the content in a wide range of ways (e.g., in a class, in a study group, on a website).</li>
+                                    <li><strong>Revise:</strong> The right to adapt, adjust, modify, or alter the content itself (e.g., translate the content into another language).</li>
+                                    <li><strong>Remix:</strong> The right to combine the original or revised content with other material to create something new (e.g., incorporate the content into a mashup).</li>
+                                    <li><strong>Redistribute:</strong> The right to share copies of the original content, your revisions, or your remixes with others (e.g., give a copy of the content to a friend).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content hidden" id="cc-licenses">
+                        <div class="card">
+                            <div class="p-6">
+                                <h2 class="mb-4 text-3xl font-bold">Creative Commons Licenses</h2>
+                                <p class="mb-4">Creative Commons licenses allow content creators to communicate which rights they reserve and which rights they waive for the benefit of recipients or other creators. Here are the main types of Creative Commons licenses:</p>
+                                <ul class="list-inside list-disc space-y-2">
+                                    <li><strong>CC BY:</strong> This license allows others to distribute, remix, adapt, and build upon the work, even commercially, as long as they credit the original creation.</li>
+                                    <li><strong>CC BY-SA:</strong> This license lets others remix, tweak, and build upon the work even for commercial purposes, as long as they credit the original creator and license their new creations under identical terms.</li>
+                                    <li><strong>CC BY-NC:</strong> This license lets others remix, tweak, and build upon the work non-commercially, and although their new works must also acknowledge the author, they don't have to license their derivative works on the same terms.</li>
+                                    <li><strong>CC BY-ND:</strong> This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to the author.</li>
+                                    <li><strong>CC BY-NC-SA:</strong> This license lets others remix, tweak, and build upon the work non-commercially, as long as they credit the author and license their new creations under identical terms.</li>
+                                    <li><strong>CC BY-NC-ND:</strong> This license is the most restrictive, allowing others to download the works and share them with others as long as they credit the author, but they can't change them in any way or use them commercially.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" class="bg-white py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">OER Video Resources</h2>
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="mb-4 text-xl font-semibold">What is OER?</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/CnFCtP1pPrM" title="What is OER?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="h-full w-full"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="mb-4 text-xl font-semibold">OER: A Practical Guide</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/UBFOQEmR1n4" title="OER: A Practical Guide" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="h-full w-full"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="mb-4 text-xl font-semibold">OER and Creative Commons</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/gLWTbIt8l3U" title="OER and Creative Commons" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="h-full w-full"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="repository" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">OER Repository</h2>
+                <div class="sticky-category-nav">
+                    <h3 class="text-xl font-semibold mb-4">Browse by Category:</h3>
+                    <div id="categoryLinks" class="flex flex-wrap gap-4">
+                        <!-- Category links will be dynamically inserted here -->
+                    </div>
+                </div>
+                <div id="resourcesContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Resources will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="creation-tools" class="bg-white py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">OER Creation Tools</h2>
+                <p class="mb-6">Explore these powerful tools for creating and publishing your own Open Educational Resources:</p>
+                <div id="creationToolsContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Creation tools will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-3xl font-bold">Contact Us</h2>
+                <div class="card">
+                    <div class="p-6">
+                        <p class="mb-4">If you have any questions or need assistance with OER, please don't hesitate to contact us:</p>
+                        <ul class="list-inside list-disc space-y-2">
+                            <li><strong>Email:</strong> oer@ub.edu.bz</li>
+                            <li><strong>Phone:</strong> +501 822-1000</li>
+                            <li><strong>Address:</strong> University of Belize, Hummingbird Avenue, Belmopan, Belize</li>
+                        </ul>
+                        <p class="mt-4">We're here to support your OER journey and answer any questions you may have about implementing OER in your courses.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-800 py-8 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 University of Belize OER Repository. All rights reserved.</p>
+            <nav class="mt-4">
+                <ul class="flex flex-wrap justify-center gap-4">
+                    <li><a href="#about-oer" class="hover:text-yellow-400">About OER</a></li>
+                    <li><a href="#faculty-guide" class="hover:text-yellow-400">Faculty Guide</a></li>
+                    <li><a href="#oer-info" class="hover:text-yellow-400">OER Info</a></li>
+                    <li><a href="#videos" class="hover:text-yellow-400">Videos</a></li>
+                    <li><a href="#repository" class="hover:text-yellow-400">Repository</a></li>
+                    <li><a href="#creation-tools" class="hover:text-yellow-400">Creation Tools</a></li>
+                    <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" class="fixed bottom-4 right-4 rounded-full shadow-lg btn btn-secondary hidden" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('hidden');
+            });
+
+            // Scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Tabs functionality
+            const tabTriggers = document.querySelectorAll('.tab-trigger');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const tabId = trigger.getAttribute('data-tab');
+                    
+                    tabTriggers.forEach(t => t.setAttribute('data-state', ''));
+                    tabContents.forEach(c => c.classList.add('hidden'));
+                    
+                    trigger.setAttribute('data-state', 'active');
+                    document.getElementById(tabId).classList.remove('hidden');
+                });
+            });
+
+            // Initialize with the first tab active
+            tabTriggers[0].click();
+
+            // OER Resources data
+            const oerResources = [
+                { name: 'OER Commons', url: 'https://www.oercommons.org/', description: 'A public digital library of open educational resources.', category: 'General' },
+                { name: 'MERLOT', url: 'https://www.merlot.org/', description: 'A curated collection of free and open online teaching, learning, and faculty development services.', category: 'General' },
+                { name: 'OpenStax', url: 'https://openstax.org/', description: 'A nonprofit educational initiative based at Rice University, providing free textbooks.', category: 'Textbooks' },
+                { name: 'MIT OpenCourseWare', url: 'https://ocw.mit.edu/', description: 'A web-based publication of virtually all MIT course content.', category: 'Courses' },
+                { name: 'Open Textbook Library', url: 'https://open.umn.edu/opentextbooks/', description: 'A growing catalog of free, peer-reviewed, and openly-licensed textbooks.', category: 'Textbooks' },
+                { name: 'Khan Academy', url: 'https://www.khanacademy.org/', description: 'Offers practice exercises, instructional videos, and a personalized learning dashboard.', category: 'Courses' },
+                { name: 'PhET Interactive Simulations', url: 'https://phet.colorado.edu/', description: 'Free interactive math and science simulations.', category: 'STEM' },
+                { name: 'Project Gutenberg', url: 'https://www.gutenberg.org/', description: 'A library of over 60,000 free eBooks.', category: 'Literature' },
+                { name: 'OpenLearn', url: 'https://www.open.edu/openlearn/', description: 'Free learning from The Open University.', category: 'Courses' },
+                { name: 'TED-Ed', url: 'https://ed.ted.com/', description: 'TED\'s education initiative to spark and celebrate the ideas of students and educators.', category: 'Videos' },
+                { name: 'Coursera', url: 'https://www.coursera.org/', description: 'Offers free courses from top universities and companies.', category: 'Courses' },
+                { name: 'edX', url: 'https://www.edx.org/', description: 'Provides free online courses from top institutions.', category: 'Courses' },
+            ];
+
+            // OER Creation Tools data
+            const oerCreationTools = [
+                {
+                    name: 'Pressbooks',
+                    url: 'https://pressbooks.com/',
+                    description: 'A book content management system that exports in multiple formats.',
+                    features: ['Easy-to-use interface', 'Multiple export formats', 'Collaborative editing']
+                },
+                {
+                    name: 'H5P',
+                    url: 'https://h5p.org/',
+                    description: 'Create and share rich interactive content in your browser.',
+                    features: ['Interactive video', 'Quizzes', 'Presentations']
+                },
+                {
+                    name: 'OpenShot',
+                    url: 'https://www.openshot.org/',
+                    description: 'A free, open-source video editor for creating educational videos.',
+                    features: ['Cross-platform', 'Easy to use', 'Supports many file formats']
+                },
+                {
+                    name: 'GIMP',
+                    url: 'https://www.gimp.org/',
+                    description: 'A free and open-source image editor for creating graphics and illustrations.',
+                    features: ['Professional-grade editing tools', 'Extensible through plugins', 'Cross-platform']
+                },
+                {
+                    name: 'Audacity',
+                    url: 'https://www.audacityteam.org/',
+                    description: 'A free, open-source audio editor and recorder.',
+                    features: ['Multi-track editing', 'Live recording', 'Wide range of effects']
+                },
+                {
+                    name: 'Canva',
+                    url: 'https://www.canva.com/',
+                    description: 'A graphic design platform for creating visual content.',
+                    features: ['User-friendly interface', 'Extensive template library', 'Collaboration features']
+                }
+            ];
+
+            // Populate category links and render resources
+            const categoryLinks = document.getElementById('categoryLinks');
+            const resourcesContainer = document.getElementById('resourcesContainer');
+
+            function renderCategoryLinks() {
+                const categories = ['All', ...new Set(oerResources.map(resource => resource.category))];
+                categories.forEach(category => {
+                    const link = document.createElement('button');
+                    link.type = 'button';
+                    link.className = 'btn btn-outline';
+                    link.textContent = category;
+                    link.setAttribute('aria-pressed', 'false');
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.querySelectorAll('#categoryLinks button').forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+                        link.setAttribute('aria-pressed', 'true');
+                        renderResources(category);
+                    });
+                    categoryLinks.appendChild(link);
+                });
+                // Set the initial "All" category as active
+                categoryLinks.firstElementChild.setAttribute('aria-pressed', 'true');
+            }
+
+            function renderResources(category = 'All') {
+                const filteredResources = category === 'All' 
+                    ? oerResources 
+                    : oerResources.filter(resource => resource.category === category);
+
+                resourcesContainer.innerHTML = '';
+
+                if (filteredResources.length === 0) {
+                    resourcesContainer.innerHTML = '<p class="text-center text-gray-500">No resources found in this category.</p>';
+                } else {
+                    filteredResources.forEach(resource => {
+                        const card = document.createElement('div');
+                        card.className = 'card fade-in';
+                        card.innerHTML = `
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">${resource.name}</h3>
+                                <p class="text-sm text-gray-600 mb-2">${resource.description}</p>
+                                <p class="text-xs text-gray-500 mb-4">Category: ${resource.category}</p>
+                                <a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline inline-flex items-center">
+                                    Visit Site
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        `;
+                        resourcesContainer.appendChild(card);
+                    });
+                }
+            }
+
+            // Initialize category links and resources
+            renderCategoryLinks();
+            renderResources();
+
+
+            // Render OER Creation Tools
+            const creationToolsContainer = document.getElementById('creationToolsContainer');
+
+            oerCreationTools.forEach(tool => {
+                const card = document.createElement('div');
+                card.className = 'card fade-in';
+                card.innerHTML = `
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">${tool.name}</h3>
+                        <p class="text-sm text-gray-600 mb-2">${tool.description}</p>
+                        <h4 class="font-semibold mb-2">Key Features:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mb-4">
+                            ${tool.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                        <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline inline-flex items-center">
+                            Learn More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                `;
+                creationToolsContainer.appendChild(card);
+            });
+
+            // Lazy loading for images
+            if ('IntersectionObserver' in window) {
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
+
+            // Simple animation for resource cards
+            const animateCards = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const cardObserver = new IntersectionObserver(animateCards, {
+                root: null,
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.card').forEach(card => {
+                cardObserver.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
