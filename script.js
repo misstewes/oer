@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         trigger.addEventListener('click', () => {
             const tabId = trigger.getAttribute('data-tab');
             
-            tabTriggers.forEach(t => t.classList.remove('bg-background', 'text-foreground', 'shadow-sm'));
+            tabTriggers.forEach(t => t.classList.remove('bg-white', 'text-purple-800', 'shadow-sm'));
             tabContents.forEach(c => c.classList.add('hidden'));
             
-            trigger.classList.add('bg-background', 'text-foreground', 'shadow-sm');
+            trigger.classList.add('bg-white', 'text-purple-800', 'shadow-sm');
             document.getElementById(tabId).classList.remove('hidden');
         });
     });
